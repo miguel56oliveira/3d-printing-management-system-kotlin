@@ -8,24 +8,40 @@ class MenuPrincipal {
             println("========================================")
             println("1. Novo Pedido (Upload .STL/.3MF)")
             println("2. Gerir Inventário de Materiais")
-            println("3. Estado das Impressoras (UC04)")
-            println("4. Histórico de Pedidos (UC05)")
+            println("3. Estado das Impressoras")
+            println("4. Histórico de Pedidos")
             println("0. Sair")
             println("========================================")
-            print("Selecione uma opção: ")
     }
 
         fun lerOpcao(): Int {
-                return readlnOrNull()?.toIntOrNull() ?: -1
+                while (true) {
+                    print("Selecione uma opção: ")
+                    val entrada = readln()
+                    val numero = entrada.toIntOrNull()
+                    if (numero != null) return numero
+                    println("Erro: Por favor, insira um número válido.")
+                }
         }
 
         fun lerEntradaTexto(mensagem: String): String {
+            while (true) {
                 print(mensagem)
-                return readlnOrNull() ?: ""
+                val entrada = readlnOrNull()?.trim()
+                if (!entrada.isNullOrEmpty()) return entrada
+                println("O campo não pode estar vazio.")            }
         }
 
         fun lerEntradaDouble(mensagem: String): Double {
+            while (true) {
                 print(mensagem)
-                return readlnOrNull()?.toDoubleOrNull() ?: 0.0
+                val entrada = readlnOrNull()?.replace(',', '.')
+                val numero = entrada?.toDoubleOrNull()
+
+                if (numero != null && numero >= 0) {
+                    return numero
+                }
+                println("Insira um valor numérico válido (ex: 10.5).")
+            }
         }
 }
