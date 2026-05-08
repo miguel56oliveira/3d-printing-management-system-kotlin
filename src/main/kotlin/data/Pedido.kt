@@ -1,5 +1,8 @@
 package data
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Pedido (
     val id: Int,
     val nomeFicheiro: String,

@@ -1,5 +1,8 @@
 package data
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Material (
     val id: Int,
     val tipo: String,
